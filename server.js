@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express') || 'Anonymous';
 var PORT = process.env.PORT || 3000;
 var app = express();
 var http = require('http').Server(app);
@@ -21,6 +21,7 @@ io.on('connection', function(socket) {
 
 	//custom event
 	socket.emit('message', {
+		name: "System",
 		text: "Welcome to my chat app",
 		timestamp: moment().valueOf()
 	});
