@@ -31,28 +31,43 @@
     .btn{
         margin-top: 5px;
     }
-    .form-control{
-        margin-top: 5px;
-    }
 
     </style>    
 </head>
 
 <body>
-    <div class="container">
+    <div class="container marginTop">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h1 class="marginTop"> Login </h1>
+        <div class="col-md-4 col-md-offset-4 well">
+            <h1> Login </h1>
             <h4> Please enter your name, and room to join </h4>
 
 
             <form action="/chat.html" id="name-form">
-                <div class="form-group">
-                    <input class = "form-control" type="text" placeholder="Enter your name" name="name"/>
-                    <input class = "form-control" type="text" placeholder="Enter room to join" name="room"/>
-                    <button id = "submit-name" class="btn btn-default">Enter Room</button>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
+                    <input type="text" name="name" placeholder="Enter your name" class="form-control"/>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-comment"></i>
+                    </span>
+                    <input type="text" name="room" placeholder="Enter room to join" class="form-control"/>       
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Join Chat" class="btn btn-default btn-block"/>
+            </div>
             </form>
+
+
 
         </div>
       </div>
