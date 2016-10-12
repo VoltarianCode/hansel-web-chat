@@ -40,16 +40,17 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h1 class="marginTop"> Login </h1>
-            <h4> Please enter your name, and room to join </h4>
+            <h1 class="marginTop"> Chat Room </h1>
+            <h6> <a href="/index.html"> Change Settings</a></h6>
 
-
-            <form action="/chat.html" id="name-form">
+            <form id="message-form">
                 <div class="form-group">
-                    <input class = "form-control" type="text" placeholder="Enter your name" name="name"/>
-                    <button id = "submit-name" class="btn btn-default">Enter Room</button>
+                    <input class = "form-control" type="text" placeholder="Enter a message to send" name="message"/>
+                    <button id = "submit-message" class="btn btn-default">Send Message</button>
                 </div>
             </form>
+
+        <div class = "messages"> </div>
 
         </div>
       </div>
