@@ -1,6 +1,12 @@
 var name = getQueryVariable('name');
 var room = getQueryVariable('room');
 
+// TODO create Authenticate for users
+
+var groupName = '';
+var userEmail = '';
+
+
 
 var socket = io();
 
@@ -13,6 +19,9 @@ socket.on('connect', function(){
 	console.log('connected to socket io server');
 	socket.emit('joinRoom', {name: name, room: room});
 });
+
+
+// When message received on client side
 
 socket.on('message', function(message){
 	var momentTimestamp = moment.utc(message.timestamp);
@@ -28,12 +37,14 @@ socket.on('message', function(message){
 	$messages.append($message);
 });
 
-var $form = jQuery('#message-form');
+// On Message Submit
 
-$form.on('submit', function (event) {
+var $messageForm = jQuery('#message-form');
+
+$messageForm.on('submit', function (event) {
 	event.preventDefault();
 
-	var $message = $form.find('input[name=message]');
+	var $message = $messageForm.find('input[name=message]');
 
 	socket.emit('message', {
 		name: name,
@@ -42,3 +53,26 @@ $form.on('submit', function (event) {
 
 	$message.val('');
 });
+
+// On Group Create
+
+
+
+var $groupCreationForm = jQuery("#group-form");
+
+$groupCreationForm.on('submit', function (event) {
+	event.preventDefault();
+
+	var $groupName = $groupCreationForm.find('input[name=groupName]');
+
+	socket.emit('createGroup', {
+		name: $groupName.val(),
+		userEmail: userEmail
+	});
+
+
+});
+
+
+
+

@@ -4,6 +4,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var moment = require('moment');
+var db = require('./db.js');
 
 
 
@@ -62,24 +63,30 @@ io.on('connection', function(socket) {
 
 		if (message.text === "@currentUsers"){
 			sendCurrentUsers(socket);
+		} else if (message.name === "System"){
+			message.timestamp = moment().valueOf();
+			io.to(clientInfo[socket.id].room).emit('message', message);
 		} else {
 			message.timestamp = moment().valueOf();
 			io.to(clientInfo[socket.id].room).emit('message', message);
+			// TODO
+			// Save Message To DB
+
 		}
 
 		
 	});
 
-	//custom event
-	socket.emit('message', {
-		name: "System",
-		text: "Welcome to my chat app",
-		timestamp: moment().valueOf()
+
+});
+
+db.sequelize.sync(
+/*{
+	force: true
+}*/
+).then(function() {
+	http.listen(PORT, function() {
+		console.log('Express server started on port ' + PORT);
 	});
-
 });
 
-
-http.listen(PORT, function() {
-	console.log('Express server started on port ' + PORT);
-});
