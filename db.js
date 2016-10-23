@@ -22,8 +22,11 @@ db.message = sequelize.import(__dirname + '/models/message.js');
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.message.belongsTo(db.user);
-db.user.hasMany(db.group);
+
+db.group.belongsToMany(db.user, { through: 'convos'});
+db.user.belongsToMany(db.group, { through: 'convos'});
+
 db.group.hasMany(db.message);
+db.user.hasMany(db.message);
 
 module.exports = db;

@@ -80,11 +80,9 @@ io.on('connection', function(socket) {
 
 });
 
-db.sequelize.sync(
-/*{
+db.sequelize.sync({
 	force: true
-}*/
-).then(function() {
+}).then(function() {
 	http.listen(PORT, function() {
 		console.log('Express server started on port ' + PORT);
 	});
