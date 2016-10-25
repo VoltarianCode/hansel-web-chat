@@ -40,33 +40,88 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3 well">
             <h1> Hansel Web Chat v1.0 </h1>
-            <h4> Please enter your name, and room to join </h4>
+            <h4> Login/Register </h4>
 
 
-            <form action="/chat.html" id="name-form">
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-user"></i>
-                    </span>
-                    <input type="text" name="name" placeholder="Enter your name" class="form-control"/>
+            <button class = "btn btn-success" data-toggle="modal" data-target="#auth-modal">
+                        <span class="glyphicon glyphicon-comment"></span> Sign In Here </button>
+            <div class="modal" id="auth-modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal">x</button>
+                                <h4 class="modal-title">User Authentication</h4>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="nav nav-tabs" id="tabContent">
+                                    <li class="active"><a href="#Login" data-toggle="tab">Log In</a></li>
+                                    <li><a href="#Sign-Up" data-toggle="tab">Sign Up</a></li>
+                                    
+                                </ul>
+                                  
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="Login">
+                                        <form method="post"> 
+
+                                            <div class="form-group">
+                                                
+                                                <input type="email" name="login" class="form-control" 
+                                                placeholder="Your Email"  />
+
+                                            </div>
+                                                
+                                            <div class="form-group">
+
+                                                <input type="password" name="loginpassword" class="form-control" 
+                                                placeholder="Password"  />
+
+                                            </div>
+
+                                            <input type="submit" name="submit" value="Log In" class="btn btn-success btn-lg "/> 
+                                        
+                                        </form>
+                                    </div>
+                                        
+                                    <div class="tab-pane" id="Sign-Up">
+                                        <form method="post"> 
+
+                                            <div class="form-group">
+                                                
+                                                <input type="text" name="username" class="form-control" 
+                                                placeholder="Your Username"  />
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                
+                                                <input type="email" name="email" class="form-control" 
+                                                placeholder="Your Email"  />
+
+                                            </div>
+                                                
+                                            <div class="form-group">
+
+                                                <input type="password" name="password" class="form-control" 
+                                                placeholder="Password"  />
+
+                                            </div>
+
+                                            <input type="submit" name="submit" value="Sign Up" class="btn btn-success btn-lg "/> 
+                                        
+                                        </form>
+                                    </div>
+
+                                </div> 
+                                
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-comment"></i>
-                    </span>
-                    <input type="text" name="room" placeholder="Enter room to join" class="form-control"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Join Chat" class="btn btn-default btn-block"/>
-            </div>
-            </form>
-
 
 
         </div>
